@@ -12,9 +12,26 @@ let addToSubscriberList = (email) => {
       console.log('Successfully subscribe to the channel.');
     }
   });
+};
 
+let getAllSubscriberList = () => {
+  subscriberModel.find({}, (err, user) => {
+    let userMap = {};
+    if(err) {
+      console.log(err);
+    } else {
+      user.forEach((user) => {
+        if(user.email) {
+          userMap[user._id] = user;
+        }
+      });
+      console.log('userMap '+JSON.stringify(userMap));
+    }
+    return userMap;
+  });
 };
 
 module.exports = {
-  addToSubscriberList: addToSubscriberList
+  addToSubscriberList: addToSubscriberList,
+  getAllSubscriberList: getAllSubscriberList
 }

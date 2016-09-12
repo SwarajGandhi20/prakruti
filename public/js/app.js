@@ -6,8 +6,8 @@ $(document).ready(function() {
     };
     $.ajax({
       method: 'POST',
-      url: 'subscribe',
-      // contentType: 'application/json',
+      url: '/subscribe',
+      contentType: 'application/json',
       data: JSON.stringify(dataObj)
     })
     .done(function() {
